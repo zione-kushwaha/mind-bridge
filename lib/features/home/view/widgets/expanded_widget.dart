@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../../text_reconization/view/text_view.dart';
 import '../../model/image_data.dart';
 
 class ExpandedContentWidget extends StatefulWidget {
@@ -33,26 +34,26 @@ class _ExpandedContentWidgetState extends State<ExpandedContentWidget> {
                 ? InkWell(
                     onTap: () {
                       if (widget.location.name == 'SCAN TEXT') {
-                        // Navigator.push(
-                        //   context,
-                        //   PageRouteBuilder(
-                        //     pageBuilder:
-                        //         (context, animation, secondaryAnimation) =>
-                        //             TextReconization(),
-                        //     transitionsBuilder: (context, animation,
-                        //         secondaryAnimation, child) {
-                        //       const curve = Curves.easeInOut;
-                        //       var tween = Tween(begin: 0.0, end: 1.0)
-                        //           .chain(CurveTween(curve: curve));
-                        //       var scaleAnimation = animation.drive(tween);
+                        Navigator.push(
+                          context,
+                          PageRouteBuilder(
+                            pageBuilder:
+                                (context, animation, secondaryAnimation) =>
+                                    TextReconization(),
+                            transitionsBuilder: (context, animation,
+                                secondaryAnimation, child) {
+                              const curve = Curves.easeInOut;
+                              var tween = Tween(begin: 0.0, end: 1.0)
+                                  .chain(CurveTween(curve: curve));
+                              var scaleAnimation = animation.drive(tween);
 
-                        //       return ScaleTransition(
-                        //         scale: scaleAnimation,
-                        //         child: child,
-                        //       );
-                        //     },
-                        //   ),
-                        // );
+                              return ScaleTransition(
+                                scale: scaleAnimation,
+                                child: child,
+                              );
+                            },
+                          ),
+                        );
                       }
                     },
                     child: Container(
