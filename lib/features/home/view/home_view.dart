@@ -14,22 +14,21 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) => Scaffold(
-        backgroundColor: Colors.white,
         appBar: AppBar(
           elevation: 0,
-          backgroundColor: Colors.transparent,
-          title: Text('Mind Bridge'),
+          backgroundColor: Colors.green,
+          title: Text('Mind Bridge',
+              style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold)),
           centerTitle: true,
           actions: [
             IconButton(
-              icon: Icon(Icons.location_pin),
+              icon: Icon(Icons.notifications, color: Colors.white),
               onPressed: () {},
             ),
           ],
-          leading: IconButton(
-            icon: Icon(Icons.search_outlined),
-            onPressed: () {},
-          ),
         ),
         body: Column(
           children: [

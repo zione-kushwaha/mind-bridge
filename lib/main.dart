@@ -5,6 +5,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:t/features/auth/view/login_view.dart';
 import 'package:t/features/home/view/home_view.dart';
 import 'firebase_options.dart';
+import 'themes/sizes.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -19,21 +20,28 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: StreamBuilder(
-        stream: FirebaseAuth.instance.authStateChanges(),
-        builder: (context, userSnapshot) {
-          if (userSnapshot.connectionState == ConnectionState.waiting) {
-            return Scaffold(body: Center(child: CircularProgressIndicator()));
-          }
-          if (!userSnapshot.hasData) {
-            return LoginView();
-          }
-          // Add logic for when user data exists
-          return HomePage();
-        },
-      ),
+    final ThemeData theme = ThemeData.light(); // Define the theme variable
+    return Sizer(
+      builder: (context, deviceType) {
+        return MaterialApp(
+          debugShowCheckedModeBanner: false,
+          theme: theme,
+          home: StreamBuilder(
+            stream: FirebaseAuth.instance.authStateChanges(),
+            builder: (context, userSnapshot) {
+              if (userSnapshot.connectionState == ConnectionState.waiting) {
+                return Scaffold(
+                    body: Center(child: CircularProgressIndicator()));
+              }
+              if (!userSnapshot.hasData) {
+                return LoginView();
+              }
+              // Add logic for when user data exists
+              return HomePage();
+            },
+          ),
+        );
+      },
     );
   }
 }

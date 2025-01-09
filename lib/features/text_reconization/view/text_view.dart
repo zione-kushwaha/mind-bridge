@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:google_mlkit_text_recognition/google_mlkit_text_recognition.dart';
 import 'package:image_picker/image_picker.dart';
 
+import '../../reader/view/reader_screen.dart';
+
 class TextReconization extends StatefulWidget {
   const TextReconization({super.key});
 
@@ -120,28 +122,28 @@ class _TextReconizationState extends State<TextReconization> {
                         padding: const EdgeInsets.only(top: 10),
                         child: GestureDetector(
                           onTap: () {
-                            // Navigator.push(
-                            //   context,
-                            //   PageRouteBuilder(
-                            //     pageBuilder:
-                            //         (context, animation, secondaryAnimation) =>
-                            //             ReaderScreen(
-                            //       Text_to_Read: scannedText,
-                            //     ),
-                            //     transitionsBuilder: (context, animation,
-                            //         secondaryAnimation, child) {
-                            //       const curve = Curves.easeInOut;
-                            //       var tween = Tween(begin: 0.0, end: 1.0)
-                            //           .chain(CurveTween(curve: curve));
-                            //       var scaleAnimation = animation.drive(tween);
+                            Navigator.push(
+                              context,
+                              PageRouteBuilder(
+                                pageBuilder:
+                                    (context, animation, secondaryAnimation) =>
+                                        ReaderScreen(
+                                  Text_to_Read: scannedText,
+                                ),
+                                transitionsBuilder: (context, animation,
+                                    secondaryAnimation, child) {
+                                  const curve = Curves.easeInOut;
+                                  var tween = Tween(begin: 0.0, end: 1.0)
+                                      .chain(CurveTween(curve: curve));
+                                  var scaleAnimation = animation.drive(tween);
 
-                            //       return ScaleTransition(
-                            //         scale: scaleAnimation,
-                            //         child: child,
-                            //       );
-                            //     },
-                            //   ),
-                            // );
+                                  return ScaleTransition(
+                                    scale: scaleAnimation,
+                                    child: child,
+                                  );
+                                },
+                              ),
+                            );
                           },
                           child: Container(
                             decoration: BoxDecoration(

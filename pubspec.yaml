@@ -44,6 +44,11 @@ dependencies:
   cloud_firestore: ^5.6.1
   google_mlkit_text_recognition: ^0.14.0
   image_picker: ^1.1.2
+  light_sensor: ^3.0.0
+  screen_brightness: ^2.0.1
+  flutter_svg: ^2.0.17
+  flutter_tts: ^4.2.1
+  gif: ^2.3.0
 
 dev_dependencies:
   flutter_test:
@@ -69,6 +74,8 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
     - assets/first/
+    - assets/images/
+    - assets/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images
@@ -81,17 +88,22 @@ flutter:
   # "family" key with the font family name, and a "fonts" key with a
   # list giving the asset and other descriptors for the font. For
   # example:
-  # fonts:
-  #   - family: Schyler
-  #     fonts:
-  #       - asset: fonts/Schyler-Regular.ttf
-  #       - asset: fonts/Schyler-Italic.ttf
-  #         style: italic
-  #   - family: Trajan Pro
-  #     fonts:
-  #       - asset: fonts/TrajanPro.ttf
-  #       - asset: fonts/TrajanPro_Bold.ttf
-  #         weight: 700
-  #
+  fonts:
+    - family: OpenDyslexic
+      fonts:
+        - asset: assets/fonts/OpenDyslexicRegular.ttf
+          weight: 400
+        - asset: assets/fonts/OpenDyslexicBold.ttf
+          weight: 700
+    - family: Roboto
+      fonts:
+        - asset: assets/fonts/RobotoMedium.ttf
+          weight: 500
+        - asset: assets/fonts/RobotoRomanRegular.ttf
+          weight: 400
+    - family: Inter
+      fonts:
+        - asset: assets/fonts/InterRegular.ttf
+          weight: 400
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/to/font-from-package
