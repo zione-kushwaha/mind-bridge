@@ -1,8 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
-import '../data/localization.dart';
-import 'location_widget.dart';
+import '../data/image_data_data.dart';
+import 'image_data_widget.dart';
 
 class templateWidget extends StatefulWidget {
   @override
