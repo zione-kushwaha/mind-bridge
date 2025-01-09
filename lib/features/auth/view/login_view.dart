@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:sign_in_button/sign_in_button.dart';
 
+import '../../home/view/home_view.dart';
 import '../auth_provider/login_view.dart';
 
 class LoginView extends ConsumerStatefulWidget {
@@ -74,15 +75,9 @@ class _SignupViewState extends ConsumerState<LoginView> {
             if (result) {
               final user = await ref.read(authServiceProvider).getUserName();
               if (user != null) {
-                // Navigator.push(context, MaterialPageRoute(builder: (context) {
-                //   return HomePage();
-                // }));
-
-                ScaffoldMessenger.of(context).showSnackBar(
-                  const SnackBar(
-                    content: Text('login successful'),
-                  ),
-                );
+                Navigator.push(context, MaterialPageRoute(builder: (context) {
+                  return HomePage();
+                }));
               } else {}
             }
           },
