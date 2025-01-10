@@ -52,6 +52,8 @@ dependencies:
   speech_to_text: ^7.0.0
   flutter_speech: ^2.0.0
   palette_generator: ^0.3.3+5
+  firebase_storage: ^12.4.0
+  firebase_database: ^11.3.0
 
 dev_dependencies:
   flutter_test:

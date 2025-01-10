@@ -40,6 +40,7 @@ class _LearnAlphabetViewState extends ConsumerState<LearnAlphabetView> {
     }
 
     return Scaffold(
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       backgroundColor: Colors.white,
       body: characterImageAsyncValue.when(
         data: (characterImageResponse) {
@@ -145,9 +146,8 @@ class _LearnAlphabetViewState extends ConsumerState<LearnAlphabetView> {
         error: (error, stack) => Center(child: Text('Error: $error')),
       ),
       floatingActionButton: FloatingActionButton(
-        backgroundColor: Colors.grey,
         onPressed: ontap,
-        child: Icon(Icons.forward, color: Colors.white),
+        child: Icon(Icons.arrow_forward),
       ),
     );
   }
