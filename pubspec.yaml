@@ -49,6 +49,8 @@ dependencies:
   flutter_svg: ^2.0.17
   flutter_tts: ^4.2.1
   gif: ^2.3.0
+  speech_to_text: ^7.0.0
+  flutter_speech: ^2.0.0
 
 dev_dependencies:
   flutter_test:
