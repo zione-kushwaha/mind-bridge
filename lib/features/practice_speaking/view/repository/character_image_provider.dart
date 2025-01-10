@@ -1,3 +1,8 @@
+import 'dart:convert';
+
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:http/http.dart' as http;
+
 class CharacterImageResponse {
   final String characterImageUrl;
   final List<ImageData> images;
@@ -41,3 +46,24 @@ class ImageData {
     );
   }
 }
+
+class CharacterImageProvider {
+  final String baseurl =
+      'https://pleasing-guppy-hardy.ngrok-free.app/api/game-images';
+
+  Future<CharacterImageResponse> fetchCharacterImage(String letter) async {
+    final response = await http.get(Uri.parse('$baseurl/$letter'));
+
+    if (response.statusCode == 200) {
+      return CharacterImageResponse.fromJson(json.decode(response.body));
+    } else {
+      throw Exception('Failed to load character image');
+    }
+  }
+}
+
+final characterImageProviderSpeakingPractice =
+    FutureProvider.family<CharacterImageResponse, String>((ref, letter) async {
+  final characterImageProvider = CharacterImageProvider();
+  return await characterImageProvider.fetchCharacterImage(letter);
+});
