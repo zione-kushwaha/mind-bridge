@@ -18,14 +18,14 @@ class _OrientationViewState extends ConsumerState<OrientationView> {
   final Random random = Random();
   Map<int, bool?> imageStates = {};
   bool correctResponseSelected = false;
-  String character = '';
   final FlutterTts flutterTts = FlutterTts();
 
   @override
   void initState() {
     super.initState();
     randomizeIndices();
-    _speak("A");
+    _speak(
+        currentLetter); // Speak the first letter when the view is initialized
   }
 
   Future<void> _speak(String text) async {
@@ -44,13 +44,14 @@ class _OrientationViewState extends ConsumerState<OrientationView> {
     setState(() {
       currentLetter = String.fromCharCode(currentLetter.codeUnitAt(0) + 1);
       randomizeIndices();
-      character = currentLetter;
       _speak(currentLetter);
     });
   }
 
   void onTryAgain() {
-    _speak(currentLetter);
+    setState(() {
+      randomizeIndices();
+    });
   }
 
   @override
@@ -184,14 +185,16 @@ class _OrientationViewState extends ConsumerState<OrientationView> {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 GestureDetector(
-                  onTap: onTryAgain,
+                  onTap: () {
+                    _speak(currentLetter);
+                  },
                   child: Image.asset(
-                    height: MediaQuery.of(context).size.height * 0.15,
+                    height: MediaQuery.of(context).size.height * 0.1,
                     'assets/first/15.png',
                   ),
                 ),
                 Image.asset(
-                  height: MediaQuery.of(context).size.height * 0.1,
+                  height: MediaQuery.of(context).size.height * 0.15,
                   'assets/first/14.png',
                 ),
               ],

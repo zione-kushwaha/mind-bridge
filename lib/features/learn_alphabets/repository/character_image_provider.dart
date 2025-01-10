@@ -1,31 +1,48 @@
-import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 
-import 'communication.dart';
+final characterImageProvider =
+    FutureProvider.family<CharacterImageResponse, String>((ref, letter) async {
+  final response = await http.get(Uri.parse(
+      'https://pleasing-guppy-hardy.ngrok-free.app/api/game-images/$letter/'));
 
-class CharacterImageProvider with ChangeNotifier {
-  CharacterImageResponse? _characterImageResponse;
-  bool _isLoading = false;
+  if (response.statusCode == 200) {
+    final data = jsonDecode(response.body);
+    return CharacterImageResponse.fromJson(data);
+  } else {
+    throw Exception('Failed to load character image');
+  }
+});
 
-  CharacterImageResponse? get characterImageResponse => _characterImageResponse;
-  bool get isLoading => _isLoading;
+class CharacterImageResponse {
+  final String? characterImageUrl;
+  final List<ImageData>? images;
 
-  Future<void> fetchCharacterImage() async {
-    _isLoading = true;
-    notifyListeners();
+  CharacterImageResponse({this.characterImageUrl, this.images});
 
-    final response = await http.get(Uri.parse(
-        'https://pleasing-guppy-hardy.ngrok-free.app/api/alphabet-images/a/'));
+  factory CharacterImageResponse.fromJson(Map<String, dynamic> json) {
+    var imagesList = json['data']['images'] as List;
+    List<ImageData> images =
+        imagesList.map((i) => ImageData.fromJson(i)).toList();
 
-    if (response.statusCode == 200) {
-      final data = jsonDecode(response.body);
-      _characterImageResponse = CharacterImageResponse.fromJson(data);
-    } else {
-      throw Exception('Failed to load character image');
-    }
+    return CharacterImageResponse(
+      characterImageUrl: json['data']['character_image_url'],
+      images: images,
+    );
+  }
+}
 
-    _isLoading = false;
-    notifyListeners();
+class ImageData {
+  final String? imageUrl;
+  final String? description;
+
+  ImageData({this.imageUrl, this.description});
+
+  factory ImageData.fromJson(Map<String, dynamic> json) {
+    return ImageData(
+      imageUrl: json['image_url'],
+      description: json['description'],
+    );
   }
 }
