@@ -16,16 +16,32 @@ class Image {
   }
 }
 
+class ImageResponse {
+  final String characterImageUrl;
+  final List<Image> images;
+
+  ImageResponse({required this.characterImageUrl, required this.images});
+
+  factory ImageResponse.fromJson(Map<String, dynamic> json) {
+    final images = (json['data']['images'] as List)
+        .map((image) => Image.fromJson(image))
+        .toList();
+    return ImageResponse(
+      characterImageUrl: json['data']['character_image_url'],
+      images: images,
+    );
+  }
+}
+
 class ImageProcessor {
   final url = 'https://mindbridge.pythonanywhere.com/api/alphabet-images/';
 
-  Future<List<Image>> fetchImages(String letter) async {
+  Future<ImageResponse> fetchImages(String letter) async {
     final response = await http.get(Uri.parse('$url/$letter/'));
 
     if (response.statusCode == 200) {
       final data = jsonDecode(response.body);
-      final images = data['data']['images'] as List;
-      return images.map((image) => Image.fromJson(image)).toList();
+      return ImageResponse.fromJson(data);
     } else {
       throw Exception('Failed to load images');
     }
@@ -33,7 +49,7 @@ class ImageProcessor {
 }
 
 final imageProcessorProvider =
-    FutureProvider.family<List<Image>, String>((ref, letter) async {
+    FutureProvider.family<ImageResponse, String>((ref, letter) async {
   final imageProcessor = ImageProcessor();
   return await imageProcessor.fetchImages(letter);
 });
