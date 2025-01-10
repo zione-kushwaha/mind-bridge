@@ -34,7 +34,7 @@ class ImageResponse {
 }
 
 class ImageProcessor {
-  final url = 'https://mindbridge.pythonanywhere.com/api/alphabet-images/';
+  final url = 'https://pleasing-guppy-hardy.ngrok-free.app/api/alphabet-images';
 
   Future<ImageResponse> fetchImages(String letter) async {
     final response = await http.get(Uri.parse('$url/$letter/'));

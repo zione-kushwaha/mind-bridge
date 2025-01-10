@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:t/features/learn_alphabets/view/learn_alphabet_view.dart';
+import 'package:t/features/practice_speaking/view/practice_speaking.dart';
 
 import '../../../orientation_test/view/orientation_view.dart';
 import '../../../text_reconization/view/text_view.dart';
@@ -62,6 +64,48 @@ class _ExpandedContentWidgetState extends State<ExpandedContentWidget> {
                             pageBuilder:
                                 (context, animation, secondaryAnimation) =>
                                     OrientationView(),
+                            transitionsBuilder: (context, animation,
+                                secondaryAnimation, child) {
+                              const curve = Curves.easeInOut;
+                              var tween = Tween(begin: 0.0, end: 1.0)
+                                  .chain(CurveTween(curve: curve));
+                              var scaleAnimation = animation.drive(tween);
+
+                              return ScaleTransition(
+                                scale: scaleAnimation,
+                                child: child,
+                              );
+                            },
+                          ),
+                        );
+                      } else if (widget.location.name == 'LEARN ALPHABETS') {
+                        Navigator.push(
+                          context,
+                          PageRouteBuilder(
+                            pageBuilder:
+                                (context, animation, secondaryAnimation) =>
+                                    LearnAlphabetView(),
+                            transitionsBuilder: (context, animation,
+                                secondaryAnimation, child) {
+                              const curve = Curves.easeInOut;
+                              var tween = Tween(begin: 0.0, end: 1.0)
+                                  .chain(CurveTween(curve: curve));
+                              var scaleAnimation = animation.drive(tween);
+
+                              return ScaleTransition(
+                                scale: scaleAnimation,
+                                child: child,
+                              );
+                            },
+                          ),
+                        );
+                      } else if (widget.location.name == 'PRACTICE SPEAKING') {
+                        Navigator.push(
+                          context,
+                          PageRouteBuilder(
+                            pageBuilder:
+                                (context, animation, secondaryAnimation) =>
+                                    PracticeSpeaking(),
                             transitionsBuilder: (context, animation,
                                 secondaryAnimation, child) {
                               const curve = Curves.easeInOut;
