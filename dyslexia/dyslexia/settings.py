@@ -141,3 +141,22 @@ SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 CSRF_TRUSTED_ORIGINS = [
     'https://pleasing-guppy-hardy.ngrok-free.app',
 ]
+import os
+import firebase_admin
+from firebase_admin import credentials
+
+# Path to the Firebase Admin SDK JSON file
+FIREBASE_KEY_PATH = os.path.join(BASE_DIR, 'keys', 'firebase_key.json')
+
+# Initialize Firebase
+cred = credentials.Certificate(FIREBASE_KEY_PATH)
+firebase_admin.initialize_app(cred)
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.TokenAuthentication',
+    ],
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.IsAuthenticated',
+    ],
+}
