@@ -1,10 +1,12 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:t/features/auth/view/login_view.dart';
 import 'package:t/features/home/view/home_view.dart';
 import 'firebase_options.dart';
+import 'task_view/features/home/presentation/screens/home_screen.dart';
 import 'themes/sizes.dart';
 
 void main() async {
@@ -37,6 +39,7 @@ class MyApp extends StatelessWidget {
                 return LoginView();
               }
               // Add logic for when user data exists
+              // return HomePage();
               return HomePage();
             },
           ),

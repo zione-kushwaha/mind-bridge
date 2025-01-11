@@ -35,10 +35,18 @@ class _SignupViewState extends ConsumerState<LoginView> {
                 child: Image.asset('assets/first/1.png'),
               ),
               SizedBox(
-                height: 20,
+                width: MediaQuery.of(context).size.width * 0.5,
+                child: Text(
+                  '''Let your children learn and play using our interactive and fun platform for especially abled 
+                              children
+                  
+                      ''',
+                  style: TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.black),
+                ),
               ),
-              Text(
-                  '''       Let your children learn and play using our interactive and fun platform for especially abled children'''),
               SizedBox(
                 height: 20,
               ),

@@ -54,6 +54,7 @@ dependencies:
   palette_generator: ^0.3.3+5
   firebase_storage: ^12.4.0
   firebase_database: ^11.3.0
+  awesome_dialog: ^3.2.1
 
 dev_dependencies:
   flutter_test:
@@ -83,6 +84,8 @@ flutter:
     - assets/
     - assets/alphabets/
     - assets/letter/
+    - assets/img/samples/
+    - assets/img/vice/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images
