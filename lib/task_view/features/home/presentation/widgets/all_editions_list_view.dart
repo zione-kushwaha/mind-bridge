@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:awesome_dialog/awesome_dialog.dart';
 
 import '../../../../core/shared/domain/entities/magazine.dart';
 
@@ -11,73 +12,39 @@ class AllEditionsListView extends StatelessWidget {
   final List<Magazine> magazines;
 
   void _showCompletionDialog(BuildContext context, Magazine magazine) {
-    showDialog(
+    AwesomeDialog(
       context: context,
-      builder: (BuildContext context) {
-        return AlertDialog(
-          title: Text('Task Completion'),
-          // content: Text('Is the task "${magazine.description}" completed?'),
-          actions: [
-            TextButton(
-              onPressed: () {
-                Navigator.of(context).pop();
-                // Handle the "Yes" action
-                _showCongratulationDialog(context);
-              },
-              child: Text('Yes'),
-            ),
-            TextButton(
-              onPressed: () {
-                Navigator.of(context).pop();
-                // Handle the "No" action
-                _showNotCompletedDialog(context);
-              },
-              child: Text('No'),
-            ),
-          ],
-        );
+      dialogType: DialogType.noHeader,
+      animType: AnimType.bottomSlide,
+      title: 'Task Completion',
+      btnCancelOnPress: () {
+        _showNotCompletedDialog(context);
       },
-    );
+      btnOkOnPress: () {
+        _showCongratulationDialog(context);
+      },
+    ).show();
   }
 
   void _showNotCompletedDialog(BuildContext context) {
-    showDialog(
+    AwesomeDialog(
       context: context,
-      builder: (BuildContext context) {
-        return AlertDialog(
-          title: Text('Task Not Completed'),
-          content: Text('The task is not completed yet.'),
-          actions: [
-            TextButton(
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
-              child: Text('OK'),
-            ),
-          ],
-        );
-      },
-    );
+      dialogType: DialogType.noHeader,
+      animType: AnimType.bottomSlide,
+      title: 'Task Not Completed',
+      btnOkOnPress: () {},
+    ).show();
   }
 
   void _showCongratulationDialog(BuildContext context) {
-    showDialog(
+    AwesomeDialog(
       context: context,
-      builder: (BuildContext context) {
-        return AlertDialog(
-          title: Text('Congratulations!'),
-          content: Text('You have completed the task.'),
-          actions: [
-            TextButton(
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
-              child: Text('OK'),
-            ),
-          ],
-        );
-      },
-    );
+      dialogType: DialogType.noHeader,
+      animType: AnimType.bottomSlide,
+      title: 'Congratulations!',
+      desc: 'You have completed the task.',
+      btnOkOnPress: () {},
+    ).show();
   }
 
   @override
