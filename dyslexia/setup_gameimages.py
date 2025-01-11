@@ -14,12 +14,17 @@ image_folder = os.path.join(settings.BASE_DIR, 'letter')
 for i in range(1, 27):
     letter_char = chr(96 + i)  # Convert number to corresponding lowercase letter (1 -> a, 2 -> b, etc.)
     image_path = os.path.join(image_folder, f'{i}.png')  # Assuming images are named 1.png, 2.png, etc.
-    
+   
     if os.path.exists(image_path):
         with open(image_path, 'rb') as image_file:
             letter_obj, created = Letter.objects.get_or_create(letter=letter_char)
             game_image, created = GameImage.objects.get_or_create(letter=letter_obj)
+            
+            # Update the main image
             game_image.image.save(f'{letter_char}.png', File(image_file), save=True)
-            print(f'Added image for letter {letter_char}')
+            
+            # Update the first additional image if it exists
+           
+            print(f'Updated images for letter {letter_char}')
     else:
         print(f'Image for letter {letter_char} not found')
