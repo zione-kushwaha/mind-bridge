@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:convex_bottom_bar/convex_bottom_bar.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:t/features/todo/view/todo_view.dart';
 import 'package:t/profile/view/profile_view.dart';
 import 'package:t/task_view/features/home/presentation/screens/home_screen.dart';
 
@@ -36,9 +35,9 @@ class _HomePageState extends State<HomePage> {
         body: Column(
           children: [
             <Widget>[
-              ProfileView(),
               templateWidget(),
               TaskView(),
+              ProfileView(),
             ][currentPageIndex],
           ],
         ),

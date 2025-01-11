@@ -26,44 +26,13 @@ class _templateWidgetState extends State<templateWidget> {
                       width: MediaQuery.of(context).size.width * 0.07,
                     ),
                     Text(
-                      'Hi, Jeevansh',
+                      'Hi, Samridhi',
                       style: TextStyle(fontSize: 18),
-                    ),
-                  ],
-                ),
-                Row(
-                  children: [
-                    SizedBox(
-                      width: MediaQuery.of(context).size.width * 0.07,
-                    ),
-                    Text(
-                      'Check Your Progress?',
-                      style: TextStyle(
-                        color: Colors.green,
-                        fontWeight: FontWeight.bold,
-                      ),
                     ),
                   ],
                 ),
                 SizedBox(
                   height: 10,
-                ),
-                Padding(
-                  padding: EdgeInsets.only(
-                      left: MediaQuery.of(context).size.width * 0.1),
-                  child: Align(
-                    alignment: Alignment.topLeft,
-                    child: Container(
-                      padding: EdgeInsets.all(10),
-                      decoration: BoxDecoration(
-                          color: Colors.green,
-                          borderRadius: BorderRadius.circular(10)),
-                      child: Text(
-                        'View Report',
-                        style: TextStyle(color: Colors.white),
-                      ),
-                    ),
-                  ),
                 ),
               ],
             ),

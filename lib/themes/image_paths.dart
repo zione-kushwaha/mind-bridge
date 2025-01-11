@@ -1,6 +1,6 @@
 class ImageConstant {
   // Image folder path
-  static String imagePath = 'assets/images';
+  static String imagePath = 'assets/task';
 
   // Menu images
   static String imgClose = '$imagePath/img_close.svg';
@@ -114,7 +114,8 @@ class ImageConstant {
 
   static String imgFontDown = '$imagePath/font-increase-svgrepo-com.svg';
 
-  static String imgLineSpacingDown = '$imagePath/line-spacing-adjustment-in-a-paragraph-svgrepo-com.svg';
+  static String imgLineSpacingDown =
+      '$imagePath/line-spacing-adjustment-in-a-paragraph-svgrepo-com.svg';
 
   static String imgIconsChecksmall = '$imagePath/img_icons_checksmall.svg';
 
@@ -157,7 +158,6 @@ class ImageConstant {
   static String imgTextBold = '$imagePath/img_text_bold.svg';
 
   // Text Settings page images
-  
 
   static String imgRewind = '$imagePath/img_rewind.svg';
 
@@ -189,5 +189,4 @@ class ImageConstant {
 
   static String imgBuildingBlocksHandle =
       '$imagePath/img_building_blocks_handle.svg';
-
 }

@@ -12,7 +12,7 @@ class Magazine {
     13,
     (index) => Magazine(
       id: '$index',
-      assetImage: 'assets/img/vice/vice${index + 1}.png',
+      assetImage: 'assets/task/${index + 1}.png',
       description:
           'Lorem Ipsum is simply dummy text of the printing and typesetting '
           "industry. Lorem Ipsum has been the industry's standard dummy "

@@ -37,8 +37,8 @@ class _SignupViewState extends ConsumerState<LoginView> {
               SizedBox(
                 width: MediaQuery.of(context).size.width * 0.5,
                 child: Text(
-                  '''Let your children learn and play using our interactive and fun platform for especially abled 
-                              children
+                  '''    Let your children learn and play using our 
+                  interactive and fun platform 
                   
                       ''',
                   style: TextStyle(

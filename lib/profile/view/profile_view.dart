@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:t/features/auth/auth_provider/login_view.dart';
+import 'package:t/task_view/features/magazines_details/presentation/widgets/web_view.dart';
 
 class ProfileView extends StatelessWidget {
   const ProfileView({super.key});
@@ -14,10 +15,14 @@ class ProfileView extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             SizedBox(height: MediaQuery.of(context).size.height * 0.05),
-            CircleAvatar(
-              backgroundColor: Colors.green,
-              radius: 100,
-              backgroundImage: AssetImage('assets/alphabets/19.png'),
+            ClipRRect(
+              borderRadius: BorderRadius.circular(100),
+              child: Image.asset(
+                'assets/sona.avif',
+                width: 400,
+                height: 200,
+                fit: BoxFit.contain,
+              ),
             ),
             SizedBox(height: MediaQuery.of(context).size.height * 0.05),
             Text(
@@ -30,7 +35,7 @@ class ProfileView extends StatelessWidget {
             ),
             SizedBox(height: 10),
             Text(
-              'Age: 10',
+              'Age: 7',
               style: TextStyle(
                 fontSize: 22,
                 color: Colors.black,
@@ -71,21 +76,21 @@ class ProfileView extends StatelessWidget {
                 ListTile(
                   leading: Icon(Icons.check_circle, color: Colors.green),
                   title: Text(
-                    'Completed 10 tasks',
+                    'Completed 2 tasks',
                     style: TextStyle(fontSize: 18),
                   ),
                 ),
                 ListTile(
                   leading: Icon(Icons.check_circle, color: Colors.green),
                   title: Text(
-                    'Read 5 books',
+                    'Reading',
                     style: TextStyle(fontSize: 18),
                   ),
                 ),
                 ListTile(
                   leading: Icon(Icons.check_circle, color: Colors.green),
                   title: Text(
-                    'Won spelling bee',
+                    'Bathing',
                     style: TextStyle(fontSize: 18),
                   ),
                 ),
@@ -102,17 +107,46 @@ class ProfileView extends StatelessWidget {
             ),
             SizedBox(height: 10),
             LinearProgressIndicator(
-              value: 0.8,
+              value: 0.4,
               backgroundColor: Colors.grey[300],
               color: Colors.green,
               minHeight: 20,
             ),
             SizedBox(height: 10),
             Text(
-              '80% completed',
+              '40% completed',
               style: TextStyle(fontSize: 18, color: Colors.black),
             ),
             SizedBox(height: 30),
+            Align(
+              alignment: Alignment.center,
+              child: Padding(
+                padding: EdgeInsets.only(
+                    left: MediaQuery.of(context).size.width * 0.1),
+                child: Align(
+                  alignment: Alignment.topLeft,
+                  child: GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => WebViewExample()));
+                    },
+                    child: Container(
+                      padding: EdgeInsets.all(20),
+                      decoration: BoxDecoration(
+                          color: Colors.green,
+                          borderRadius: BorderRadius.circular(10)),
+                      child: Text(
+                        'View Report',
+                        style: TextStyle(
+                            color: Colors.white, fontWeight: FontWeight.bold),
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            ),
             Consumer(builder: (context, ref, child) {
               return ElevatedButton(
                 onPressed: () async {

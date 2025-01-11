@@ -55,6 +55,8 @@ dependencies:
   firebase_storage: ^12.4.0
   firebase_database: ^11.3.0
   awesome_dialog: ^3.2.1
+  flutter_3d_drawer: ^0.0.1
+  webview_flutter: ^4.10.0
 
 dev_dependencies:
   flutter_test:
@@ -86,6 +88,7 @@ flutter:
     - assets/letter/
     - assets/img/samples/
     - assets/img/vice/
+    - assets/task/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images
