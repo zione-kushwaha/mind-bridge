@@ -51,22 +51,24 @@ class _TaskViewState extends State<TaskView> with TickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        SizedBox(height: 48),
-        InfiniteDragableSlider(
-          iteamCount: Magazine.fakeMagazinesValues.length,
-          itemBuilder: (context, index) =>
-              MagazineCoverImage(magazine: Magazine.fakeMagazinesValues[index]),
-        ),
-        SizedBox(
-          height: MediaQuery.of(context).size.height * 0.2,
-        ),
-        SizedBox(
-          height: 140,
-          child: AllEditionsListView(magazines: magazines),
-        ),
-      ],
+    return SingleChildScrollView(
+      child: Column(
+        children: [
+          SizedBox(height: 48),
+          InfiniteDragableSlider(
+            iteamCount: Magazine.fakeMagazinesValues.length,
+            itemBuilder: (context, index) => MagazineCoverImage(
+                magazine: Magazine.fakeMagazinesValues[index]),
+          ),
+          SizedBox(
+            height: MediaQuery.of(context).size.height * 0.05,
+          ),
+          SizedBox(
+            height: 140,
+            child: AllEditionsListView(magazines: magazines),
+          ),
+        ],
+      ),
     );
   }
 }
