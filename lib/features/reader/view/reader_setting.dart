@@ -5,6 +5,7 @@ import 'package:t/themes/sizes.dart';
 import '../../../themes/image_paths.dart';
 import '../../../themes/text_styles.dart';
 import '../../../themes/theme_config.dart';
+
 import '../widget/custom_checkbox_bottom.dart';
 import '../widget/image_view.dart';
 
@@ -138,11 +139,29 @@ class _ReadSettingsPageScreenState extends State<ReadSettingsPageScreen> {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              _buildCustomImageView(ImageConstant.imgTextLineSpacing,
-                  onTap: lineSpacingUp),
-              SizedBox(width: 2.v),
-              _buildCustomImageView(ImageConstant.imgLineSpacingDown,
-                  onTap: lineSpacingDown),
+              // _buildCustomImageView(ImageConstant.imgTextLineSpacing,
+              //     onTap: lineSpacingUp),
+
+              // SizedBox(width: 2.v),
+              // _buildCustomImageView(ImageConstant.imgLineSpacingDown,
+              //     onTap: lineSpacingDown),
+              IconButton(
+                  onPressed: lineSpacingUp,
+                  icon: Icon(
+                    Icons.format_line_spacing,
+                    size: 30,
+                    color: Colors.white,
+                  )),
+              SizedBox(
+                width: 30,
+              ),
+              IconButton(
+                  onPressed: lineSpacingDown,
+                  icon: Icon(
+                    Icons.arrow_downward,
+                    size: 30,
+                    color: Colors.white,
+                  )),
               SizedBox(width: 2.v),
               _buildCustomImageView(ImageConstant.imgFontUp, onTap: fontDown),
               SizedBox(width: 2.v),

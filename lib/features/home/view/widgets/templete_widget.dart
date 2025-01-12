@@ -12,6 +12,7 @@ class templateWidget extends StatefulWidget {
 class _templateWidgetState extends State<templateWidget> {
   final pageController = PageController(viewportFraction: 0.8);
   int pageIndex = 0;
+  final FirebaseAuth _auth = FirebaseAuth.instance;
 
   @override
   Widget build(BuildContext context) => Column(
@@ -26,7 +27,7 @@ class _templateWidgetState extends State<templateWidget> {
                       width: MediaQuery.of(context).size.width * 0.07,
                     ),
                     Text(
-                      'Hi, Samridhi',
+                      'Hi, ${_auth.currentUser!.displayName}',
                       style: TextStyle(fontSize: 18),
                     ),
                   ],
@@ -39,6 +40,7 @@ class _templateWidgetState extends State<templateWidget> {
           ),
           Container(
             height: MediaQuery.of(context).size.height * 0.63,
+            // color: Colors.red,
             child: PageView.builder(
               controller: pageController,
               itemCount: locations.length,

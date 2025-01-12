@@ -3,14 +3,14 @@ import 'package:webview_flutter/webview_flutter.dart';
 import 'package:webview_flutter_android/webview_flutter_android.dart';
 import 'package:webview_flutter_wkwebview/webview_flutter_wkwebview.dart';
 
-class WebViewExample extends StatefulWidget {
-  const WebViewExample({Key? key}) : super(key: key);
+class ReportView extends StatefulWidget {
+  const ReportView({Key? key}) : super(key: key);
 
   @override
-  State<WebViewExample> createState() => _WebViewExampleState();
+  State<ReportView> createState() => _ReportViewState();
 }
 
-class _WebViewExampleState extends State<WebViewExample> {
+class _ReportViewState extends State<ReportView> {
   late final WebViewController _controller;
   bool isLoading = true;
 
@@ -86,7 +86,8 @@ class _WebViewExampleState extends State<WebViewExample> {
           );
         },
       )
-      ..loadRequest(Uri.parse('https://www.google.com'));
+      ..loadRequest(
+          Uri.parse('https://machadop1407.github.io/chartjs-react-tutorial/'));
 
     if (controller.platform is AndroidWebViewPlatform) {
       // Handle any Android-specific configurations here if needed

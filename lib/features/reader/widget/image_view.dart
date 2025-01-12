@@ -95,7 +95,7 @@ class CustomImageView extends StatelessWidget {
 
 extension ImageTypeExtension on String {
   ImageType get imageType {
-    if (this.endsWith('.svg')) {
+    if (endsWith('.svg')) {
       return ImageType.svg;
     } else {
       return ImageType.png;

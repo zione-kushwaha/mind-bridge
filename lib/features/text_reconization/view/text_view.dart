@@ -148,6 +148,9 @@ class _TextReconizationState extends State<TextReconization> {
                               PageRouteBuilder(
                                 pageBuilder:
                                     (context, animation, secondaryAnimation) =>
+                                        //         ReaderScreen(
+                                        //   Text_to_Read: scannedText,
+                                        // ),
                                         ReaderScreen(
                                   Text_to_Read: scannedText,
                                 ),
