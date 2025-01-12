@@ -12,6 +12,7 @@ class templateWidget extends StatefulWidget {
 class _templateWidgetState extends State<templateWidget> {
   final pageController = PageController(viewportFraction: 0.8);
   int pageIndex = 0;
+  final FirebaseAuth _auth = FirebaseAuth.instance;
 
   @override
   Widget build(BuildContext context) => Column(
@@ -26,50 +27,20 @@ class _templateWidgetState extends State<templateWidget> {
                       width: MediaQuery.of(context).size.width * 0.07,
                     ),
                     Text(
-                      'Hi, Jeevansh',
+                      'Hi, ${_auth.currentUser!.displayName}',
                       style: TextStyle(fontSize: 18),
-                    ),
-                  ],
-                ),
-                Row(
-                  children: [
-                    SizedBox(
-                      width: MediaQuery.of(context).size.width * 0.07,
-                    ),
-                    Text(
-                      'Check Your Progress?',
-                      style: TextStyle(
-                        color: Colors.green,
-                        fontWeight: FontWeight.bold,
-                      ),
                     ),
                   ],
                 ),
                 SizedBox(
                   height: 10,
                 ),
-                Padding(
-                  padding: EdgeInsets.only(
-                      left: MediaQuery.of(context).size.width * 0.1),
-                  child: Align(
-                    alignment: Alignment.topLeft,
-                    child: Container(
-                      padding: EdgeInsets.all(10),
-                      decoration: BoxDecoration(
-                          color: Colors.green,
-                          borderRadius: BorderRadius.circular(10)),
-                      child: Text(
-                        'View Report',
-                        style: TextStyle(color: Colors.white),
-                      ),
-                    ),
-                  ),
-                ),
               ],
             ),
           ),
           Container(
             height: MediaQuery.of(context).size.height * 0.63,
+            // color: Colors.red,
             child: PageView.builder(
               controller: pageController,
               itemCount: locations.length,

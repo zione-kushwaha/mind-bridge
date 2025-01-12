@@ -36,6 +36,23 @@ class _TextReconizationState extends State<TextReconization> {
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
+                Container(
+                  padding: const EdgeInsets.all(10),
+                  decoration: BoxDecoration(
+                    color: Colors.green,
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  child: Text(
+                    "Scan the text from an image",
+                    style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white),
+                  ),
+                ),
+                SizedBox(
+                  height: 20,
+                ),
                 if (textIsScanning) const CircularProgressIndicator(),
                 if (!textIsScanning && imageFile == null)
                   Container(
@@ -44,6 +61,10 @@ class _TextReconizationState extends State<TextReconization> {
                     decoration: BoxDecoration(
                         color: Colors.grey[300],
                         borderRadius: BorderRadius.circular(10)),
+                    child: Icon(
+                      Icons.camera_alt_outlined,
+                      size: 200,
+                    ),
                   ),
                 if (imageFile != null)
                   Container(
@@ -116,7 +137,7 @@ class _TextReconizationState extends State<TextReconization> {
                   height: 20,
                 ),
                 scannedText.isEmpty
-                    ? SizedBox()
+                    ? Container()
                     : Container(
                         margin: const EdgeInsets.symmetric(horizontal: 5),
                         padding: const EdgeInsets.only(top: 10),
@@ -127,6 +148,9 @@ class _TextReconizationState extends State<TextReconization> {
                               PageRouteBuilder(
                                 pageBuilder:
                                     (context, animation, secondaryAnimation) =>
+                                        //         ReaderScreen(
+                                        //   Text_to_Read: scannedText,
+                                        // ),
                                         ReaderScreen(
                                   Text_to_Read: scannedText,
                                 ),

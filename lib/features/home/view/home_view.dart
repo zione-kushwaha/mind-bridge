@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:convex_bottom_bar/convex_bottom_bar.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:t/features/home/view/test.dart';
 
 import 'widgets/templete_widget.dart';
 
@@ -35,7 +34,7 @@ class _HomePageState extends State<HomePage> {
           children: [
             <Widget>[
               templateWidget(),
-              Test(),
+              Container(),
               Container(),
             ][currentPageIndex],
           ],

@@ -216,6 +216,7 @@ class _ReaderScreenState extends State<ReaderScreen> {
               chapter: chapter,
               updateBackgroundColorCallback: updateBackgroundColor,
               scaffoldBackgroundColor: scaffoldBackgroundColor,
+              // scaffoldBackgroundColor: Colors.red,
               updateTextAndStyleCallback: updateTextAndStyle,
               updateBrightnessCallback: updateBrightness,
               passbright: brightness,
