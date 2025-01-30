@@ -1,7 +1,10 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_tts/flutter_tts.dart';
+import 'package:t/features/orientation_test/view/orientation_view.dart';
 import 'package:t/features/pallete_generator/repository.dart';
+import 'package:t/features/practice_speaking/view/practice_speaking.dart';
 
 import '../repository/character_image_provider.dart';
 import '../repository/character_notifier.dart';
@@ -24,7 +27,7 @@ class _LearnAlphabetViewState extends ConsumerState<LearnAlphabetView> {
   }
 
   void _speak(String text) async {
-    await flutterTts.speak(text);
+    await flutterTts.speak('This is Alphabet $text');
   }
 
   @override
@@ -97,18 +100,6 @@ class _LearnAlphabetViewState extends ConsumerState<LearnAlphabetView> {
                         ],
                       )),
                   Positioned(
-                      bottom: MediaQuery.of(context).size.height * 0.007,
-                      left: MediaQuery.of(context).size.width * 0.16,
-                      child: GestureDetector(
-                        onTap: () {
-                          _speak(currentChar);
-                        },
-                        child: Image.asset(
-                          'assets/first/15.png',
-                          height: MediaQuery.of(context).size.height * 0.15,
-                        ),
-                      )),
-                  Positioned(
                     top: MediaQuery.of(context).size.height * 0.2,
                     left: MediaQuery.of(context).size.width * 0.25,
                     child: Container(
@@ -135,19 +126,81 @@ class _LearnAlphabetViewState extends ConsumerState<LearnAlphabetView> {
                   )
                 ],
               ),
-              Image.network(
-                characterImageUrl,
-                height: MediaQuery.of(context).size.height * 0.3,
-              )
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  SizedBox(
+                    width: 70,
+                  ),
+                  Image.network(
+                    characterImageUrl,
+                    height: MediaQuery.of(context).size.height * 0.2,
+                  ),
+                  SizedBox(
+                    width: MediaQuery.of(context).size.width * 0.1,
+                  ),
+                  CircleAvatar(
+                    radius: 25,
+                    backgroundColor: Colors.black,
+                    child: TextButton(
+                      onPressed: ontap,
+                      child: Icon(
+                        Icons.arrow_forward_ios,
+                        color: Colors.white,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+              GestureDetector(
+                onTap: () {
+                  _speak(currentChar);
+                },
+                child: Image.asset(
+                  'assets/first/15.png',
+                  height: MediaQuery.of(context).size.height * 0.1,
+                ),
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) {
+                        return OrientationView();
+                      }));
+                    },
+                    child: Image.asset(
+                      'assets/first/10.png',
+                      height: MediaQuery.of(context).size.height * 0.1,
+                    ),
+                  ),
+                  SizedBox(
+                    width: 80,
+                  ),
+                  Align(
+                    alignment: Alignment.bottomRight,
+                    child: GestureDetector(
+                      onTap: () {
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (context) {
+                          return PracticeSpeaking();
+                        }));
+                      },
+                      child: Image.asset(
+                        'assets/first/4.png',
+                        height: MediaQuery.of(context).size.height * 0.1,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
             ],
           );
         },
         loading: () => Center(child: CircularProgressIndicator()),
         error: (error, stack) => Center(child: Text('Error: $error')),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: ontap,
-        child: Icon(Icons.arrow_forward),
       ),
     );
   }

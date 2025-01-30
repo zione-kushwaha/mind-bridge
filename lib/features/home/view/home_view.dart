@@ -32,17 +32,15 @@ class _HomePageState extends State<HomePage> {
             ),
           ],
         ),
-        body: Container(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              <Widget>[
-                Align(alignment: Alignment.center, child: templateWidget()),
-                TaskView(),
-                ProfileView(),
-              ][currentPageIndex],
-            ],
-          ),
+        body: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            <Widget>[
+              ProfileView(),
+              Align(alignment: Alignment.center, child: templateWidget()),
+              TaskView(),
+            ][currentPageIndex],
+          ],
         ),
         bottomNavigationBar: buildBottomNavigation(),
       );

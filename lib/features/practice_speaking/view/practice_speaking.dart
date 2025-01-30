@@ -271,7 +271,11 @@ class _PracticeSpeakingState extends ConsumerState<PracticeSpeaking>
                         height: MediaQuery.of(context).size.height * 0.13)
                   ],
                 ),
+                SizedBox(
+                  height: MediaQuery.of(context).size.height * 0.1,
+                ),
                 Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     GestureDetector(
                       onTap: () {
@@ -280,7 +284,7 @@ class _PracticeSpeakingState extends ConsumerState<PracticeSpeaking>
                       child: Container(
                         margin: EdgeInsets.only(
                             left: MediaQuery.of(context).size.width * 0.4),
-                        padding: EdgeInsets.all(23),
+                        padding: EdgeInsets.all(10),
                         decoration: BoxDecoration(
                           color: Colors.green,
                           borderRadius: BorderRadius.circular(10),
@@ -289,30 +293,39 @@ class _PracticeSpeakingState extends ConsumerState<PracticeSpeaking>
                           'Speak',
                           style: TextStyle(
                             color: Colors.white,
-                            fontSize: 32,
+                            fontSize: 20,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
                       ),
                     ),
-                    Spacer(),
+                    // Spacer(),
                     Align(
                       alignment: Alignment.bottomRight,
                       child: is_listening
                           ? Image.asset('assets/alphabets/25.png',
-                              width: 300, height: 300)
+                              width: MediaQuery.of(context).size.width * 0.35,
+                              height: MediaQuery.of(context).size.height * 0.15)
                           : isCorrect
                               ? Image.asset('assets/alphabets/20.png',
-                                  width: 300, height: 300)
+                                  width:
+                                      MediaQuery.of(context).size.width * 0.35,
+                                  height:
+                                      MediaQuery.of(context).size.height * 0.15)
                               : Image.asset('assets/alphabets/21.png',
-                                  width: 300, height: 300),
+                                  width:
+                                      MediaQuery.of(context).size.width * 0.35,
+                                  height: MediaQuery.of(context).size.height *
+                                      0.15),
                     ),
                   ],
                 ),
+                // Spacer(),
                 GestureDetector(
                   onTap: _nextLetter,
                   child: Container(
-                      padding: EdgeInsets.all(20),
+                      padding: EdgeInsets.all(10),
+                      margin: EdgeInsets.only(bottom: 20),
                       decoration: BoxDecoration(
                         color: Colors.green,
                         borderRadius: BorderRadius.circular(10),

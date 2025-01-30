@@ -5,7 +5,8 @@ import 'package:http/http.dart' as http;
 final characterImageProvider =
     FutureProvider.family<CharacterImageResponse, String>((ref, letter) async {
   final response = await http.get(Uri.parse(
-      'https://pleasing-guppy-hardy.ngrok-free.app/api/game-images/$letter/'));
+      'https://mindbridge.pythonanywhere.com/api/game-images/$letter/'));
+  // 'https://pleasing-guppy-hardy.ngrok-free.app/api/game-images/$letter/'));
 
   if (response.statusCode == 200) {
     final data = jsonDecode(response.body);

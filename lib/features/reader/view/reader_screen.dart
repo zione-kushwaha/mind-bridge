@@ -230,6 +230,6 @@ class _ReaderScreenState extends State<ReaderScreen> {
         ),
       ),
     );
-    Overlay.of(context)?.insert(_overlayEntry!);
+    Overlay.of(context).insert(_overlayEntry!);
   }
 }

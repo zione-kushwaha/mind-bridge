@@ -49,7 +49,9 @@ class ImageData {
 
 class CharacterImageProvider {
   final String baseurl =
-      'https://pleasing-guppy-hardy.ngrok-free.app/api/game-images';
+      'https://mindbridge.pythonanywhere.com/api/game-images';
+  // 'https://pleasing-guppy-hardy.ngrok-free.app/api/game-images';
+  // https://mindbridge.pythonanywhere.com
 
   Future<CharacterImageResponse> fetchCharacterImage(String letter) async {
     final response = await http.get(Uri.parse('$baseurl/$letter'));

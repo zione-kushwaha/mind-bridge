@@ -52,13 +52,13 @@ class _TaskViewState extends State<TaskView> with TickerProviderStateMixin {
     return SingleChildScrollView(
       child: Column(
         children: [
-          SizedBox(height: 48),
+          SizedBox(height: MediaQuery.of(context).size.height * 0.02),
           InfiniteDragableSlider(
             iteamCount: Magazine.fakeMagazinesValues.length,
             itemBuilder: (context, index) => MagazineCoverImage(
                 magazine: Magazine.fakeMagazinesValues[index]),
           ),
-          SizedBox(height: MediaQuery.of(context).size.height * 0.15),
+          SizedBox(height: MediaQuery.of(context).size.height * 0.08),
           SizedBox(
             height: 140,
             child: AllEditionsListView(magazines: magazines),

@@ -56,33 +56,36 @@ class _OrientationViewState extends ConsumerState<OrientationView> {
 
   @override
   Widget build(BuildContext context) {
+    final screenHeight = MediaQuery.of(context).size.height;
+    final screenWidth = MediaQuery.of(context).size.width;
+
     return Scaffold(
       body: Container(
+        padding: EdgeInsets.symmetric(horizontal: screenWidth * 0.05),
         child: Column(
           children: [
-            SizedBox(
-              height: MediaQuery.of(context).size.height * 0.05,
-            ),
+            SizedBox(height: screenHeight * 0.05),
             Container(
-              width: 200,
+              width: screenWidth * 0.5,
               decoration: BoxDecoration(
                 color: Colors.green,
                 borderRadius: BorderRadius.circular(10),
               ),
-              padding: EdgeInsets.all(15),
+              padding: EdgeInsets.all(screenHeight * 0.02),
               child: Center(
                 child: Text(
                   'Orientation Test',
                   style: TextStyle(
                     color: Colors.white,
-                    fontSize: 20,
+                    fontSize: screenHeight * 0.02,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
               ),
             ),
+            SizedBox(height: screenHeight * 0.05),
             SizedBox(
-              height: MediaQuery.of(context).size.height * 0.5,
+              height: screenHeight * 0.4,
               child: Consumer(builder: (context, ref, child) {
                 final imgsAsyncValue =
                     ref.watch(img.imageProcessorProvider(currentLetter));
@@ -90,12 +93,13 @@ class _OrientationViewState extends ConsumerState<OrientationView> {
                   data: (imageResponse) {
                     final images = imageResponse.images;
                     return GridView.builder(
-                      padding: EdgeInsets.only(top: 50, left: 120, right: 120),
+                      padding:
+                          EdgeInsets.symmetric(horizontal: screenWidth * 0.2),
                       itemCount: 9,
                       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                         crossAxisCount: 3,
-                        crossAxisSpacing: 20,
-                        mainAxisSpacing: 20,
+                        crossAxisSpacing: screenWidth * 0.02,
+                        mainAxisSpacing: screenHeight * 0.02,
                       ),
                       itemBuilder: (context, index) {
                         final image = images[randomizedIndices[index]];
@@ -128,6 +132,7 @@ class _OrientationViewState extends ConsumerState<OrientationView> {
                                   child: Center(
                                     child: Image.network(
                                       image.imageUrl,
+                                      fit: BoxFit.cover,
                                     ),
                                   ),
                                 ),
@@ -144,7 +149,7 @@ class _OrientationViewState extends ConsumerState<OrientationView> {
                                         color: imageState
                                             ? Colors.green
                                             : Colors.red,
-                                        size: 100,
+                                        size: screenHeight * 0.1,
                                       ),
                                     ),
                                   ),
@@ -171,8 +176,8 @@ class _OrientationViewState extends ConsumerState<OrientationView> {
                     return Align(
                       alignment: Alignment.center,
                       child: Image.network(
-                        height: MediaQuery.of(context).size.height * 0.15,
                         characterImageUrl,
+                        height: screenHeight * 0.15,
                       ),
                     );
                   },
@@ -189,26 +194,29 @@ class _OrientationViewState extends ConsumerState<OrientationView> {
                     _speak(currentLetter);
                   },
                   child: Image.asset(
-                    height: MediaQuery.of(context).size.height * 0.1,
                     'assets/first/15.png',
+                    height: screenHeight * 0.1,
                   ),
                 ),
                 Image.asset(
-                  height: MediaQuery.of(context).size.height * 0.15,
                   'assets/first/14.png',
+                  height: screenHeight * 0.15,
                 ),
               ],
             ),
             Spacer(),
             Padding(
-              padding: const EdgeInsets.only(bottom: 20, left: 20, right: 20),
+              padding: EdgeInsets.only(
+                  bottom: screenHeight * 0.02,
+                  left: screenWidth * 0.05,
+                  right: screenWidth * 0.05),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   GestureDetector(
                     onTap: onTryAgain,
                     child: Container(
-                      padding: EdgeInsets.all(10),
+                      padding: EdgeInsets.all(screenHeight * 0.02),
                       decoration: BoxDecoration(
                         color: Colors.green,
                         borderRadius: BorderRadius.circular(10),
@@ -217,7 +225,7 @@ class _OrientationViewState extends ConsumerState<OrientationView> {
                         'Try Again',
                         style: TextStyle(
                           color: Colors.white,
-                          fontSize: 20,
+                          fontSize: screenHeight * 0.025,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
@@ -226,7 +234,7 @@ class _OrientationViewState extends ConsumerState<OrientationView> {
                   GestureDetector(
                     onTap: onNext,
                     child: Container(
-                      padding: EdgeInsets.all(10),
+                      padding: EdgeInsets.all(screenHeight * 0.02),
                       decoration: BoxDecoration(
                         color: Colors.green,
                         borderRadius: BorderRadius.circular(10),
@@ -235,7 +243,7 @@ class _OrientationViewState extends ConsumerState<OrientationView> {
                         'Next',
                         style: TextStyle(
                           color: Colors.white,
-                          fontSize: 20,
+                          fontSize: screenHeight * 0.025,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
