@@ -36,9 +36,9 @@ class _HomePageState extends State<HomePage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             <Widget>[
-              ProfileView(),
               Align(alignment: Alignment.center, child: templateWidget()),
               TaskView(),
+              ProfileView(),
             ][currentPageIndex],
           ],
         ),

@@ -48,8 +48,7 @@ class ImageData {
 }
 
 class CharacterImageProvider {
-  final String baseurl =
-      'https://mindbridge.pythonanywhere.com/api/game-images';
+  final String baseurl = 'http://mindbridge.dipeshacharya.tech/api/game-images';
   // 'https://pleasing-guppy-hardy.ngrok-free.app/api/game-images';
   // https://mindbridge.pythonanywhere.com
 

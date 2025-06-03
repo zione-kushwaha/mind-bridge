@@ -58,7 +58,7 @@ class _TaskViewState extends State<TaskView> with TickerProviderStateMixin {
             itemBuilder: (context, index) => MagazineCoverImage(
                 magazine: Magazine.fakeMagazinesValues[index]),
           ),
-          SizedBox(height: MediaQuery.of(context).size.height * 0.08),
+          SizedBox(height: MediaQuery.of(context).size.height * 0.1),
           SizedBox(
             height: 140,
             child: AllEditionsListView(magazines: magazines),
