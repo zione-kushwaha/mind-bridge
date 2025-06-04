@@ -62,7 +62,7 @@ class _MagazinesDetailsScreenState extends State<MagazinesDetailsScreen> {
               // TODO: Cube 3D PageView
               SliverToBoxAdapter(
                 child: SizedBox(
-                  height: MediaQuery.of(context).size.height * 0.65,
+                  height: MediaQuery.of(context).size.height * 0.2,
                   child: Center(
                     child: Text(
                       "TODO: Cube 3D PageView",

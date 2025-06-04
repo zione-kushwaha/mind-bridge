@@ -60,7 +60,7 @@ class _TaskViewState extends State<TaskView> with TickerProviderStateMixin {
           ),
           SizedBox(height: MediaQuery.of(context).size.height * 0.1),
           SizedBox(
-            height: 140,
+            height: 80,
             child: AllEditionsListView(magazines: magazines),
           ),
         ],

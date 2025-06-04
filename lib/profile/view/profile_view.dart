@@ -96,7 +96,7 @@ class _ProfileViewState extends State<ProfileView> {
               color: Colors.black,
             ),
           ),
-          SizedBox(height: height * 0.02),
+          // SizedBox(height: height * 0.02),
           Text(
             'Rating:',
             style: TextStyle(
@@ -105,7 +105,7 @@ class _ProfileViewState extends State<ProfileView> {
               color: Colors.black,
             ),
           ),
-          SizedBox(height: height * 0.02),
+          // SizedBox(height: height * 0.02),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: List.generate(5, (index) {
@@ -186,7 +186,7 @@ class _ProfileViewState extends State<ProfileView> {
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.green,
                   textStyle: TextStyle(
-                    fontSize: 20,
+                    fontSize: 10,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
@@ -202,14 +202,17 @@ class _ProfileViewState extends State<ProfileView> {
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.green,
                   textStyle: TextStyle(
-                    fontSize: 20,
+                    fontSize: 10,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-                child: Text(
-                  'Subscription',
-                  style: TextStyle(
-                    color: Colors.white,
+                child: FittedBox(
+                  child: Text(
+                    'Subscription',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 10,
+                    ),
                   ),
                 ),
               ),
